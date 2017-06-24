@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
+
+    <link rel="stylesheet" href="./styles.css">
+
+  </head>
+  <body>
+
+    <div class="topBar">
+      <div class="title">
+        <p>MYSTERY WORD</p>
+      </div>
+      <div class="loggedIn">
+        <p>Logged in as: {{user}}</p>
+      </div>
+    </div>
+
+<div class="gameArea">
+  <div class="remaining">
+    <p>Guesses Remaining: </p>
+  </div>
+  <div class="guessHere">
+    <form class="guessForm" action="/" method="post">
+      <input type="text" name="playerGuess" value = "" placeholder="Guess one letter">
+      <input class="guessButton" type="submit" name="guessButton" value="Guess!">
+    </form>
+    <div class="wordSpace">
+
+    </div>
+    <div class="lettersUsed">
+      <p>Letters Used: </p>
+    </div>
+  </div>
+
+</div>
+
+<script src="./game.js"></script>
+
+  </body>
+</html>

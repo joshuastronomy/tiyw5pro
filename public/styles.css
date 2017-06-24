@@ -1,0 +1,22 @@
+.topBar {
+  font-family: 'Josefin Slab';
+  width: 50vw;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.gameArea {
+  position:absolute;
+    left:43.5%;
+    top:20%;
+  font-family: 'Josefin Slab';
+  display: flex;
+  flex-flow: column nowrap;
+  text-align: center;
+}
+
+input {
+  font-family: 'Josefin Slab';
+}
