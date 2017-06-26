@@ -1,11 +1,9 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const mustacheExpress = require('mustache-express');
 const session = require('express-session');
 const expressValidator = require('express-validator');
+const bodyParser = require('body-parser');
+const mustacheExpress = require('mustache-express');
 const fs = require('fs');
-const path = require('path');
-const game = require('./game');
 
 const app = express();
 

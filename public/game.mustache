@@ -22,18 +22,18 @@
 
 <div class="gameArea">
   <div class="remaining">
-    <p>Guesses Remaining: </p>
+    <p>Guesses Remaining: {{gameLives}} </p>
   </div>
   <div class="guessHere">
     <form class="guessForm" action="/" method="post">
       <input type="text" name="playerGuess" value = "" placeholder="Guess one letter">
       <input class="guessButton" type="submit" name="guessButton" value="Guess!">
     </form>
-    <div class="wordSpace">
-
+    <div class="gameSpace">
+      {{gameArr}}
     </div>
     <div class="lettersUsed">
-      <p>Letters Used: </p>
+      <p>Letters Used: {{deadLetters}}</p>
     </div>
   </div>
 

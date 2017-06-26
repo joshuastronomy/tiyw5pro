@@ -1,0 +1,33 @@
+const words = fs.readFileSync("/usr/share/dict/words", "utf-8").toLowerCase().split("\n");
+
+let randWord = words[Math.floor(Math.random() * words.length)];
+
+let gameArr = [];
+
+for (idx = 0; idx <= randWord.length; idx++) {
+  gameArr.push("_");
+}
+
+let wordArr = randWord.split("");
+
+let deadLetters = [];
+
+let gameLives = 8;
+
+if deadLetter.includes(guessedLetter) {
+  //errors
+} else {
+  for (let idx in wordArr)  {
+    if (guessedLetter == wordArr[idx])  {
+      gameArr.splice(idx, 1, guessedLetter);
+      if deadLetter.includes(guessedLetter) {
+        errors
+      } else {
+        deadLetter.push(guessedLetter);
+      }
+    } else {
+      deadLetter.push(guessedLetter);
+      gameLives--;
+    }
+  }
+}
