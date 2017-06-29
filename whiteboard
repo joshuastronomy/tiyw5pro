@@ -31,3 +31,9 @@ if deadLetter.includes(guessedLetter) {
     }
   }
 }
+
+req.session.game = {
+gameArr: [],
+wordArr: [],
+etc
+}

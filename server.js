@@ -23,56 +23,55 @@ app.use(session({
   secret: 'get dunked kid',
   resave: false,
   saveUninitialized: true
-}))
+}));
 
 app.use(function(req, res, next) {
   if (!req.session.game) {
-    req.session.game = {};
-
-    req.session.game.words = fs.readFileSync("/usr/share/dict/words", "utf-8").toLowerCase().split("\n");
-
+    req.session.game = {
+    words: fs.readFileSync('/usr/share/dict/words', 'utf-8').toLowerCase().split('\n'),
+    gameArr: [],
+    wordArr: [],
+    deadLetters: [],
+    gameLives: 8
+    };
+    req.session.game.randWord = req.session.game.words[Math.floor(Math.random() * req.session.game.words.length)];
+    req.session.game.wordArr = req.session.game.randWord.split('');
   }
   next();
-})
+});
 
 
 app.get('/', function(req, res) {
+  let randWord = req.session.game.randWord;
+  let gameArr = req.session.game.gameArr;
+  let wordArr = req.session.game.wordArr;
+  let deadLetters = req.session.game.deadLetters;
+  let gameLives = req.session.game.gameLives;
 
-  if (!req.session.game.wordArr) {
-
-    const words = req.session.game.words;
-
-    let randWord = words[Math.floor(Math.random() * words.length)];
-
-    console.log(randWord);
-
-    let gameArr = [];
+  if (!gameArr.length) {
 
     for (let idx = 0; idx < randWord.length; idx++) {
-      gameArr.push("_");
+      gameArr.push('_');
     }
 
-    let wordArr = randWord.split("");
-
-    let deadLetters = [];
-
-    let gameLives = 8;
-
-    req.session.game.gameArr = gameArr;
-    req.session.game.wordArr = wordArr;
-    req.session.game.deadLetters = deadLetters;
-    req.session.game.gameLives = gameLives;
-
+    console.log(randWord);
     console.log(gameArr);
     console.log(wordArr);
     console.log(deadLetters);
     console.log(gameLives);
 
-  }
+  } else if (gameLives == 0) {
+      console.log('you lose!');
+      req.session.game = 0;
+      res.redirect('/');
 
+    } else if (wordArr.join('') === gameArr.join('') ) {
+      console.log('you win!');
+      req.session.game = 0;
+      res.redirect('/');
+    }
   res.render('game', req.session.game);
-
-})
+});
 
 app.post('/', function(req, res) {
 
@@ -108,5 +107,5 @@ app.post('/', function(req, res) {
 });
 
 app.listen(3000, function() {
-  console.log("MYSTERY WORD online...");
-})
+  console.log('MYSTERY WORD online...');
+});
