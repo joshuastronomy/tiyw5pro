@@ -4,7 +4,7 @@ let randWord = words[Math.floor(Math.random() * words.length)];
 
 let gameArr = [];
 
-for (idx = 0; idx <= randWord.length; idx++) {
+for (idx = 0; idx < randWord.length; idx++) {
   gameArr.push("_");
 }
 

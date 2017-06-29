@@ -15,14 +15,11 @@
       <div class="title">
         <p>MYSTERY WORD</p>
       </div>
-      <div class="loggedIn">
-        <p>Logged in as: {{user}}</p>
-      </div>
     </div>
 
 <div class="gameArea">
   <div class="remaining">
-    <p>Guesses Remaining: {{gameLives}} </p>
+    <p>Guesses Remaining: <span>{{gameLives}}</span> </p>
   </div>
   <div class="guessHere">
     <form class="guessForm" action="/" method="post">
@@ -30,16 +27,13 @@
       <input class="guessButton" type="submit" name="guessButton" value="Guess!">
     </form>
     <div class="gameSpace">
-      {{gameArr}}
+      <span>{{#gameArr}}{{.}}{{/gameArr}}</span>
     </div>
     <div class="lettersUsed">
-      <p>Letters Used: {{deadLetters}}</p>
+      <p>Letters Used: <span>{{deadLetters}}</span></p>
     </div>
   </div>
 
 </div>
-
-<script src="./game.js"></script>
-
   </body>
 </html>
