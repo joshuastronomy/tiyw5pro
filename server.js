@@ -32,7 +32,10 @@ app.use(function(req, res, next) {
     gameArr: [],
     wordArr: [],
     deadLetters: [],
-    gameLives: 8
+    gameLives: 1,
+    killswitch: false,
+    killWin: false,
+    killLose: false
     };
     req.session.game.randWord = req.session.game.words[Math.floor(Math.random() * req.session.game.words.length)];
     req.session.game.wordArr = req.session.game.randWord.split('');
@@ -62,13 +65,14 @@ app.get('/', function(req, res) {
 
   } else if (gameLives == 0) {
       console.log('you lose!');
-      req.session.game = 0;
-      res.redirect('/');
+      req.session.game.killswitch = true;
+      req.session.game.killLose = true;
+      req.session.game.gameArr = req.session.game.wordArr;
 
     } else if (wordArr.join('') === gameArr.join('') ) {
       console.log('you win!');
-      req.session.game = 0;
-      res.redirect('/');
+      req.session.game.killswitch = true;
+      req.session.game.killWin = true;
     }
   res.render('game', req.session.game);
 });
@@ -104,6 +108,11 @@ app.post('/', function(req, res) {
     }
   }
   res.redirect('/');
+});
+
+app.post('/newGame', function(req, res) {
+req.session.game = 0;
+res.redirect('/');
 });
 
 app.listen(3000, function() {

@@ -19,7 +19,13 @@
 
 <div class="gameArea">
   <div class="remaining">
-    <p>Guesses Remaining: <span>{{gameLives}}</span> </p>
+    {{#killswitch}}
+    {{#killLose}}<p>YOU LOSE</p>{{/killLose}}
+    {{#killWin}}<p>YOU WIN</p>{{/killWin}}
+    <form class="restart" action="/newgame" method="post"><button type="submit" >Try Again</button>
+
+    </form>{{/killswitch}}
+    {{^killswitch}}<p>Guesses Remaining: <span>{{gameLives}}</span> </p>{{/killswitch}}
   </div>
   <div class="guessHere">
     <form class="guessForm" action="/" method="post">
