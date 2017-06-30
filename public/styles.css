@@ -1,20 +1,37 @@
 .topBar {
   font-family: 'Josefin Slab';
+  font-size: 2em;
   width: 50vw;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: center;
   margin: 0 auto;
 }
 
 .gameArea {
-  position:absolute;
+  /*position:absolute;
     left:43.5%;
-    top:20%;
+    top:20%;*/
   font-family: 'Josefin Slab';
+  font-size: 2em;
   display: flex;
   flex-flow: column nowrap;
   text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.guessHere  {
+  padding: 10px;
+}
+
+.gameSpace  {
+  padding: 10px;
+}
+
+.guessForm input  {
+  height: 30px;
+  font-size: .5em;
 }
 
 input {
